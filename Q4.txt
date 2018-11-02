@@ -1,0 +1,5 @@
+Alexander Smith - b7s1b -40066003 - no partner
+
+I spent quite a long time on question 1(d), due to stubbornness. I also 
+can't get Q2 to run due to error messages i can't figure out even using the debugger.
+I didn't get to question 3, due mostly to the above. Oh well.
