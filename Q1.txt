@@ -3,9 +3,17 @@ CPSC 312 - Assignment 4 - Nov. 1 2018
 
  Question 1
 
- (a) ?- assignment(_,september,X). -> 13, 20, 30
+ (a) ?- assignment(_,september,X).
 
- (b) ?- ta(_,_,X), email(X,Y).
+    Output:
+      13, 20, 30
+
+ (b) Since the question only asks for one email, you could use the nth
+predicate to take only the first one. Since this is a "built-in", I assumed
+we were not allowed to use it.
+
+
+    ?- ta(_,_,X), email(X,Y).
 
         Output:
            X = ainaz,
@@ -21,51 +29,53 @@ CPSC 312 - Assignment 4 - Nov. 1 2018
  or probably some built-in or packaged swi-prolog functions.
 
    ?- (office_hour(X,A,_,_),office_hour(Y,B,_,_),A=B),name(X,Z,_),name(Y,W,_).
-     X = Y, Y = davidp,
-     A = B, B = wednesday,
-     Z = W, W = "David" ;
-     X = davidp,
-     A = B, B = wednesday,
-     Y = liran,
-     Z = "David",
-     W = "Liran" ;
-     X = Y, Y = ainaz,
-     A = B, B = thursday,
-     Z = W, W = "Ainaz" ;
-     X = ainaz,
-     A = B, B = thursday,
-     Y = rge,
-     Z = "Ainaz",
-     W = "Rui" ;
-     X = Y, Y = ainaz,
-     A = B, B = tuesday,
-     Z = W, W = "Ainaz" ;
-     X = Y, Y = liran,
-     A = B, B = monday,
-     Z = W, W = "Liran" ;
-     X = liran,
-     A = B, B = wednesday,
-     Y = davidp,
-     Z = "Liran",
-     W = "David" ;
-     X = Y, Y = liran,
-     A = B, B = wednesday,
-     Z = W, W = "Liran" ;
-     X = rge,
-     A = B, B = thursday,
-     Y = ainaz,
-     Z = "Rui",
-     W = "Ainaz" ;
-     X = Y, Y = rge,
-     A = B, B = thursday,
-     Z = W, W = "Rui" ;
-     X = Y, Y = rge,
-     A = B, B = friday,
-     Z = W, W = "Rui".
+
+      Output:
+           X = Y, Y = davidp,
+           A = B, B = wednesday,
+           Z = W, W = "David" ;
+           X = davidp,
+           A = B, B = wednesday,
+           Y = liran,
+           Z = "David",
+           W = "Liran" ;
+           X = Y, Y = ainaz,
+           A = B, B = thursday,
+           Z = W, W = "Ainaz" ;
+           X = ainaz,
+           A = B, B = thursday,
+           Y = rge,
+           Z = "Ainaz",
+           W = "Rui" ;
+           X = Y, Y = ainaz,
+           A = B, B = tuesday,
+           Z = W, W = "Ainaz" ;
+           X = Y, Y = liran,
+           A = B, B = monday,
+           Z = W, W = "Liran" ;
+           X = liran,
+           A = B, B = wednesday,
+           Y = davidp,
+           Z = "Liran",
+           W = "David" ;
+           X = Y, Y = liran,
+           A = B, B = wednesday,
+           Z = W, W = "Liran" ;
+           X = rge,
+           A = B, B = thursday,
+           Y = ainaz,
+           Z = "Rui",
+           W = "Ainaz" ;
+           X = Y, Y = rge,
+           A = B, B = thursday,
+           Z = W, W = "Rui" ;
+           X = Y, Y = rge,
+           A = B, B = friday,
+           Z = W, W = "Rui".
 
  (d) Note: I used "forall" here beacuse SWI-Prolog identifies it as a
- "library statement", distinct from a built in statement. I don't think the
- question would be possible without using it, except perhaps with recursion.
+ "library statement", distinct from a built in statement. Not sure if this is
+ ok or not, but I'm pretty sure I couldn't have done it without it.
 
  \+forall((ta(_,_,X)),((office_hour(Y,_,_,_)), (X=Y))).
 
