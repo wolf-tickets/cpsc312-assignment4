@@ -1,0 +1,86 @@
+Alexander Smith - b7s1b - 40066003
+CPSC 312 - Assignment 4 - Nov. 1 2018
+
+ Question 1
+
+ (a) ?- assignment(_,september,X). -> 13, 20, 30
+
+ (b) ?- ta(_,_,X), email(X,Y).
+
+        Output:
+           X = ainaz,
+           Y = "ainaz@cs.ubc.ca" ;
+           X = liran,
+           Y = "liran.li@alumni.ubc.ca" ;
+           X = rge,
+           Y = "rge@cs.ubc.ca".
+
+ (c) The following prints a lot of information, but the pairs are identifiable
+ by two first names on consecutive lines (unfortunately, it also prints
+ both permutations of each pair.) This could be fixed with clever grepping
+ or probably some built-in or packaged swi-prolog functions.
+
+   ?- (office_hour(X,A,_,_),office_hour(Y,B,_,_),A=B),name(X,Z,_),name(Y,W,_).
+     X = Y, Y = davidp,
+     A = B, B = wednesday,
+     Z = W, W = "David" ;
+     X = davidp,
+     A = B, B = wednesday,
+     Y = liran,
+     Z = "David",
+     W = "Liran" ;
+     X = Y, Y = ainaz,
+     A = B, B = thursday,
+     Z = W, W = "Ainaz" ;
+     X = ainaz,
+     A = B, B = thursday,
+     Y = rge,
+     Z = "Ainaz",
+     W = "Rui" ;
+     X = Y, Y = ainaz,
+     A = B, B = tuesday,
+     Z = W, W = "Ainaz" ;
+     X = Y, Y = liran,
+     A = B, B = monday,
+     Z = W, W = "Liran" ;
+     X = liran,
+     A = B, B = wednesday,
+     Y = davidp,
+     Z = "Liran",
+     W = "David" ;
+     X = Y, Y = liran,
+     A = B, B = wednesday,
+     Z = W, W = "Liran" ;
+     X = rge,
+     A = B, B = thursday,
+     Y = ainaz,
+     Z = "Rui",
+     W = "Ainaz" ;
+     X = Y, Y = rge,
+     A = B, B = thursday,
+     Z = W, W = "Rui" ;
+     X = Y, Y = rge,
+     A = B, B = friday,
+     Z = W, W = "Rui".
+
+ (d) Note: I used "forall" here beacuse SWI-Prolog identifies it as a
+ "library statement", distinct from a built in statement. I don't think the
+ question would be possible without using it, except perhaps with recursion.
+
+ \+forall((ta(_,_,X)),((office_hour(Y,_,_,_)), (X=Y))).
+
+ The query in plain English is "It is not the case that for all TAs named X,
+ there is a TA holding office hours named Y such that X=Y."
+
+ Output with the code above unmodified is False (i.e. it is false that there
+ is a TA who is not holding office hours). Output with any TA's office hours
+ commented out is True.
+
+ (e) You would need the date of the first class, the frequency of classes, and
+  a method of accounting for weekends/holidays/etc. The number_of_classes_before
+  could then be constructed iteratively from an ordered list of the exams and
+  their dates.
+
+  I have no idea whether this is possible in Prolog, although I did notice some
+  list operations in the documentation so I assume that it probably is, perhaps
+  with some additional packages.
